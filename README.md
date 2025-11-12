@@ -1,6 +1,6 @@
 # Mastering PreviewTraits:
 
-![AppIcon128](Images/AppIcon128.png) This is the starter project for the video mastering PreviewTraits
+![AppIcon128](Images/AppIcon128.png) This is the completed source code for the video mastering PreviewTraits
 
 Release Date: January 4, 2026
 
