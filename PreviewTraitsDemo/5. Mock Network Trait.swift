@@ -17,6 +17,7 @@
 import SwiftUI
 
 struct MockNetworkTrait: View {
+    @Environment(NavigationManager.self) private var navManager
     @Environment(NetworkService.self) var networkService
     var body: some View {
         NavigationStack {
@@ -29,13 +30,12 @@ struct MockNetworkTrait: View {
                         .foregroundStyle(.secondary)
                 }
             }
-            .navigationTitle("Network")
+            .navigationTitle(navManager.selectedTab.title)
             .toolbarTitleDisplayMode(.inlineLarge)
         }
     }
 }
 
-#Preview {
+#Preview(traits: .mockNetworkService, .navTrait(selected: .mockNetwork)) {
     MockNetworkTrait()
-        .environment(NetworkService())
 }

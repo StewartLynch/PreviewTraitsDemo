@@ -64,7 +64,7 @@ struct StartTab: View {
     }
 }
 
-#Preview {
+#Preview(traits: .mockNetworkService, .mockData) {
     StartTab()
         .environment(NavigationManager())
 }

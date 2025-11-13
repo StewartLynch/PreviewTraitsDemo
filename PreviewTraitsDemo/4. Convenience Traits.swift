@@ -17,6 +17,7 @@
 import SwiftUI
 
 struct ConvenienceTrait: View {
+    @Environment(NavigationManager.self) private var navManager
     var body: some View {
         NavigationStack {
             VStack(spacing: 20) {
@@ -40,13 +41,16 @@ struct ConvenienceTrait: View {
                         .foregroundStyle(.secondary)
                     }
                     .padding()
-                    .navigationTitle("Convenience")
+                    .navigationTitle(navManager.selectedTab.title)
                     .toolbarTitleDisplayMode(.inlineLarge)
         }
     }
 }
 
-#Preview {
+#Preview("Normal", traits: .navTrait(selected: .convenience)) {
     ConvenienceTrait()
 }
 
+#Preview("Dark Mode + XXXLarge Type", traits: .darkMode, .dynamicTypeSize(.xxxLarge),.navTrait(selected: .convenience)) {
+    ConvenienceTrait()
+}

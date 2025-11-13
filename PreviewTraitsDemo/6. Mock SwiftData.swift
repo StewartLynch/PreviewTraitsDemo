@@ -33,6 +33,7 @@ class TodoItem {
 
 struct MockSwiftData: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(NavigationManager.self) private var navManager
     @State private var showingAddSheet = false
     @State private var dateInput: String = ""
     @State private var titleInput: String = ""
@@ -73,7 +74,7 @@ struct MockSwiftData: View {
                         }
                     }
                 }
-                .navigationTitle("SwiftData")
+                .navigationTitle(navManager.selectedTab.title)
                 .toolbarTitleDisplayMode(.inlineLarge)
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
@@ -115,6 +116,6 @@ struct MockSwiftData: View {
         }
 }
 
-#Preview {
+#Preview(traits: .mockData, .navTrait(selected: .mockSwiftData)) {
     MockSwiftData()
 }

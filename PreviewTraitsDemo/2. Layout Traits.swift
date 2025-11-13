@@ -35,6 +35,14 @@ struct LayoutTraits: View {
     }
 }
 
-#Preview {
+#Preview("Normal") {
+    LayoutTraits()
+}
+
+#Preview("Fits Content", traits: .sizeThatFitsLayout) {
+    LayoutTraits()
+}
+
+#Preview("Fixed Layout", traits: .fixedLayout(width: 200, height: 200)) {
     LayoutTraits()
 }

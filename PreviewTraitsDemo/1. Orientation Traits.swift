@@ -17,6 +17,7 @@
 import SwiftUI
 
 struct OrientationTraits: View {
+    @Environment(NavigationManager.self) private var navManager
     var body: some View {
         NavigationStack {
             ViewThatFits {
@@ -27,7 +28,7 @@ struct OrientationTraits: View {
                     threeSquares
                 }
             }
-            .navigationTitle("Orientation")
+            .navigationTitle(navManager.selectedTab.title)
             .toolbarTitleDisplayMode(.inlineLarge)
         }
     }
@@ -41,7 +42,10 @@ struct OrientationTraits: View {
     }
 }
 
-#Preview {
+#Preview("Portrait", traits: .navTrait(selected: .orientation)) {
     OrientationTraits()
 }
 
+#Preview("Landscape", traits: .landscapeLeft,.navTrait(selected: .orientation)) {
+    OrientationTraits()
+}
